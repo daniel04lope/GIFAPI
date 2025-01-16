@@ -8,7 +8,7 @@ import { GifsServiceService } from '../../../gifs/Service/gifs.service.service';
 })
 export class SidebarComponent {
   constructor( private gifsService: GifsServiceService){}
-
+ activado:boolean = false;
   get tags(){
     return this.gifsService.tagsHistory;
   }
@@ -16,5 +16,17 @@ export class SidebarComponent {
   searchTag(tag: string){
     
     this.gifsService.searchTag(tag)
+  }
+  modooscuro() {
+    if (this.activado){
+      document.body.style.backgroundColor = 'black';
+      document.body.style.color = 'white';
+      this.activado=false;
+    }
+    else{ document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+      this.activado=true;
+    }
+   
   }
 }

@@ -13,6 +13,7 @@ export class GifsServiceService {
   private _tagsHistory: string[] = [];
   private apiKey:     string = 'ka8VzXLfP6Hp6aYPyOPuO68nD0358mSk';
   private serviceURL: string = 'https://api.giphy.com/v1/gifs';
+  private styles: { [key: string]: string } = {};
 
   constructor(private http:HttpClient ) { }
   
@@ -65,6 +66,12 @@ export class GifsServiceService {
     //'api.giphy.com/v1/gifs/search?q=valorant&limit=10')
   
   
+    }
+    setStyle(selector: string, property: string, value: string): void {
+      const element = document.querySelector(selector);
+      if (element) {
+        (element as HTMLElement).style.setProperty(property, value);
+      }
     }
 
 }
